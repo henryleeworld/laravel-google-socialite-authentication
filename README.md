@@ -16,14 +16,6 @@ $ composer install
 ```sh
 $ php artisan key:generate
 ```
-- 建立含有使用者認證的框架（bootstrap 版本）
-```sh
-$ php artisan ui bootstrap --auth
-```
-- 安裝相依性套件並編譯
-```sh
-$ npm install && npm run dev
-```
 - 執行 __Artisan__ 指令的 __migrate__ 來執行所有未完成的遷移。
 ```sh
 $ php artisan migrate
