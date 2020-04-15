@@ -1,4 +1,4 @@
-# Laravel 6 通過 OAuth 進行 Google 身份驗證
+# Laravel 7 通過 OAuth 進行 Google 身份驗證
 
 通過 OAuth 可以使用 Google 帳戶登入網站，如此一來就不必費心記住使用者名稱和密碼。
 
