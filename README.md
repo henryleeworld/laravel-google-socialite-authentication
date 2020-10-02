@@ -1,4 +1,4 @@
-# Laravel 7 通過 OAuth 進行 Google 身份驗證
+# Laravel 8 通過 OAuth 進行 Google 身份驗證
 
 通過 OAuth 可以使用 Google 帳戶登入網站，如此一來就不必費心記住使用者名稱和密碼。
 
@@ -12,7 +12,7 @@ $ git clone
 ```sh
 $ composer install
 ```
-- 產⽣ Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
+- 產生 Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
 ```sh
 $ php artisan key:generate
 ```
@@ -20,14 +20,18 @@ $ php artisan key:generate
 ```sh
 $ php artisan migrate
 ```
+- 執行安裝 Laravel Mix 引用的依賴項目，並執行所有 Mix 任務。
+```sh
+$ npm install && npm run dev
+```
 - 在瀏覽器中輸入已定義的路由 URL 來，例如：http://127.0.0.1:8000。
 - 你可以登入經由 `/login` 來進行登入，點選「使用 Google 登入」以使用 Google 帳戶登入網站。
 
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/z5OyJ07.png)
+![](https://i.imgur.com/ukBuNZO.png)
 > 透過 Google 帳戶登入，讓你使用 Google 帳戶資訊登入或註冊該網站
 
-![](https://i.imgur.com/EpjnoFQ.png)
+![](https://i.imgur.com/XrKh50U.png)
 > 將你的 Google 帳戶連結到網站帳戶

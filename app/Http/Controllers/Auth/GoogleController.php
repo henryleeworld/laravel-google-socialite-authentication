@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-  
-use App\Http\Controllers\Controller;
-use Socialite;
+
 use Auth;
 use Exception;
-use App\User;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Socialite;
   
 class GoogleController extends Controller
 {
@@ -37,7 +37,7 @@ class GoogleController extends Controller
      
                 Auth::login($finduser);
     
-                return redirect('/home');
+                return redirect('/dashboard');
      
             }else{
                 $newUser = User::create([
@@ -49,7 +49,7 @@ class GoogleController extends Controller
     
                 Auth::login($newUser);
      
-                return redirect('/home');
+                return redirect('/dashboard');
             }
     
         } catch (Exception $e) {
