@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Auth;
-use Exception;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Auth;
+use Exception;
 use Socialite;
   
 class GoogleController extends Controller
@@ -29,31 +29,18 @@ class GoogleController extends Controller
     {
         try {
     
-            $user = Socialite::driver('google')->user();
-     
-            $finduser = User::where('google_id', $user->id)->first();
-     
-            if($finduser){
-     
-                Auth::login($finduser);
-    
-                return redirect('/dashboard');
-     
-            }else{
-                $newUser = User::create([
-                    'name'            => $user->name,
-                    'email'           => $user->email,
-                    'google_id'       => $user->id,
-                    'google_nickname' => $user->nickname,
-                    'google_avatar'   => $user->avatar,
-                    'password'        => encrypt('123456dummy')
-                ]);
-    
-                Auth::login($newUser);
-     
-                return redirect('/dashboard');
-            }
-    
+            $googleUser = Socialite::driver('google')->user();
+            $user = User::updateOrCreate([
+                'google_id'       => $googleUser->id,
+                'google_nickname' => $googleUser->nickname,
+                'google_avatar'   => $googleUser->avatar,
+            ], [
+                'name'            => $googleUser->name,
+                'email'           => $googleUser->email,
+                'password'        => encrypt('123456dummy')
+            ]);
+            Auth::login($user);
+            return redirect('/dashboard');
         } catch (Exception $e) {
             dd($e->getMessage());
         }
