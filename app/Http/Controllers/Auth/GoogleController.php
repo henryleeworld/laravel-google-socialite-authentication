@@ -32,12 +32,12 @@ class GoogleController extends Controller
             $googleUser = Socialite::driver('google')->user();
             $user = User::updateOrCreate([
                 'google_id'       => $googleUser->id,
-                'google_nickname' => $googleUser->nickname,
-                'google_avatar'   => $googleUser->avatar,
             ], [
                 'name'            => $googleUser->name,
                 'email'           => $googleUser->email,
-                'password'        => encrypt('123456dummy')
+                'password'        => encrypt('123456dummy'),
+                'google_nickname' => $googleUser->nickname,
+                'google_avatar'   => $googleUser->avatar,
             ]);
             Auth::login($user);
             return redirect('/dashboard');
